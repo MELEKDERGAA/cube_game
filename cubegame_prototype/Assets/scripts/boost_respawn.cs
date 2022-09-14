@@ -32,5 +32,12 @@ public class boost_respawn : MonoBehaviour
             }
         }
     }
+
+    public GameObject complete_lvl_UI;
+
+    public void completeLevel()
+    {
+        complete_lvl_UI.SetActive(true);
+    }
    
 }

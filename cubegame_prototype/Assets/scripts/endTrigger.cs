@@ -4,7 +4,7 @@ public class endTrigger : MonoBehaviour
 {
     public boost_respawn Boost_Respawn;
 
-    void OnTriggerEnter()
+    private void OnTriggerStay(Collider other)
     {
         Boost_Respawn.completeLevel();
     }

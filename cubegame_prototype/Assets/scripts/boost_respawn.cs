@@ -10,11 +10,11 @@ public class boost_respawn : MonoBehaviour
     {
         if (other.gameObject.CompareTag("slow"))
         {
-            GetComponent<Rigidbody>().drag=3.0f;
+            GetComponent<Rigidbody>().drag=2.0f;
             isboosted = true;
         }else if (other.gameObject.CompareTag("speed"))
         {
-            GetComponent<Rigidbody>().drag = -2.0f;
+            GetComponent<Rigidbody>().drag = -1.0f;
             isboosted = true;
         }
         

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class musicscript : MonoBehaviour
 {
@@ -8,15 +9,18 @@ public class musicscript : MonoBehaviour
 
     public void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
-
-        if (instance == null)
+        AudioSource audioSource = GetComponent<AudioSource>();
+        Scene scene=SceneManager.GetActiveScene();
+        if (scene.name == "start")
         {
-            instance = this;
+            audioSource.Pause();
         }
         else
         {
-            Destroy(gameObject);
+            audioSource.Play();
         }
+
+
+        
     }
 }

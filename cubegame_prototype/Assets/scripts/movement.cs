@@ -9,10 +9,12 @@ public class movement : MonoBehaviour
     private Vector3 respawnpoint;
     public float force=5.0f;
     float i = 2.0f;
+    public bool respawned;
     // Start is called before the first frame update
     void Start()
     {
         respawnpoint = transform.position;
+        respawned = false;
     }
 
     // Update is called once per frame
@@ -28,7 +30,7 @@ public class movement : MonoBehaviour
                 transform.position = respawnpoint;
                 //Debug.Log(force);
                 // makes the cube after respawning hard to get right or left because  the force is too high and the mass is small
-                GetComponent<Rigidbody>().drag = 2.5f;
+                GetComponent<Rigidbody>().drag = 50.1f;
                 i -= Time.deltaTime;
                 //Debug.Log(i);
                 //it's like a clock when "i" gets <=0 that means it's been a 1sec from respawning and only after 1 sec the cube can move freely
@@ -40,6 +42,7 @@ public class movement : MonoBehaviour
                     Debug.Log(force);
                     GetComponent<Rigidbody>().drag = .0f;
                     collision = null;
+                    respawned = false;
                 }
             }
         }
@@ -55,5 +58,6 @@ public class movement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         this.collision = collision;
+        respawned = true;
     }
 }
